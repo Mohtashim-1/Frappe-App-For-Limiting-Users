@@ -115,12 +115,16 @@ app_license = "MIT"
 # Document Events
 # ---------------
 # Hook on document methods and events
-
+on_login = 'limit_app.events.auth.successful_login'
 doc_events = {
 	"User": {
 		"validate": "limit_app.events.auth.user_limit",
 		"on_update": "limit_app.events.auth.user_limit"
-	}
+	},
+    'Company':{
+        "validate": "limit_app.events.auth.company_limit",
+		"on_update": "limit_app.events.auth.company_limit"
+    }
 }
 
 # Scheduled Tasks

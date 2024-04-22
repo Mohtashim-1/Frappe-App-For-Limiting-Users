@@ -14,15 +14,19 @@ def successful_login(login_manager):
 
     diff = date_diff(expiry, today())
     if login_manager.user != "Administrator" and diff < 0:
-        frappe.throw(_("You site is suspended. Please contact PowerSoft <br> Email: {0} <br>Phone: {1}").format(email,phone), frappe.AuthenticationError)
+        frappe.throw(_("Your account has been suspended as your subscription has expired. <br> Contact our billing & sales team as per below details and make payment to renew your subscription <br> Email: {0} <br>Phone: {1}").format(email,phone), frappe.AuthenticationError)
 
 def user_limit(self, method):
-    no_users = frappe.db.get_single_value('PS Info', 'no_of_users')
-    print(no_users)
+    allow_users = frappe.db.get_single_value('PS Info', 'no_of_users')
+    print(allow_users)
+
+# get active users
 
     user_list = frappe.get_list('User', filters={'enabled': 1,"name":['not in',['Guest', 'Administrator']]})
     active_users = len(user_list)
     print(active_users)
+
+# get email and phone from limit doctype
 
     email = frappe.db.get_single_value('PS Info', 'support_email')
     phone = frappe.db.get_single_value('PS Info', 'support_phone')
