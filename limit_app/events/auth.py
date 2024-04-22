@@ -31,5 +31,27 @@ def user_limit(self, method):
     email = frappe.db.get_single_value('PS Info', 'support_email')
     phone = frappe.db.get_single_value('PS Info', 'support_phone')
 
-    if no_users != 0 and active_users > no_users:
-        frappe.throw(_("Allow Users:{0}, Active Users:{1}<br>You have exceeded your Users limit <br> Please disable users or to increase the limit please contact <br> Email: {2} <br> Phone: {3}").format(no_users,active_users,email,phone))
+    if allow_users != 0 and active_users > allow_users:
+        frappe.throw(_("Purchased User Licened {0},Creating{1} User <br> You can not create additional user or contact our sales & billing team as per below details and make payment for additional users. <br>Email{2} <br> Phone:{3}  ").format(allow_users,active_users,email,phone))
+
+
+    # Company
+
+    def company_limit(self, method):
+        '''validate company limit'''
+
+        # get no of company from Limiting Doc
+        allowed_companies= frappe.db.get_list('Limiting Doc',"no_of_companies")
+        print(allowed_companies)
+
+        # calculatin total companies
+
+        total_company = int(frappe.db.get_value('Company',filters={}))
+        print(total_company)
+
+        # get email and phone from limiting doc
+
+        email = frappe.db.get_value('Limiting Doc','support_email')
+        contact = frappe.db.get_value('Limiting Doc','support_contact')
+
+        # validations
