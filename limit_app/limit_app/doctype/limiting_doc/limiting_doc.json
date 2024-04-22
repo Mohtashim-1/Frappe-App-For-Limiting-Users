@@ -1,0 +1,69 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-04-23 00:11:47.648646",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "no_of_users",
+  "no_of_companies",
+  "site_expiry_date",
+  "support_email",
+  "support_contact"
+ ],
+ "fields": [
+  {
+   "fieldname": "no_of_users",
+   "fieldtype": "Int",
+   "label": "No. of Users"
+  },
+  {
+   "fieldname": "no_of_companies",
+   "fieldtype": "Data",
+   "label": "No. of Companies"
+  },
+  {
+   "fieldname": "site_expiry_date",
+   "fieldtype": "Data",
+   "label": "Site Expiry Date"
+  },
+  {
+   "fieldname": "support_email",
+   "fieldtype": "Data",
+   "label": "Support Email"
+  },
+  {
+   "fieldname": "support_contact",
+   "fieldtype": "Data",
+   "label": "Support Contact"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-04-23 00:11:47.648646",
+ "modified_by": "Administrator",
+ "module": "Limit App",
+ "name": "Limiting Doc",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}
