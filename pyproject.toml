@@ -1,9 +1,9 @@
 [project]
 name = "limit_app"
 authors = [
-    { name = "mohtashim", email = "shoaibmohtashim973"}
+    { name = "mohtashim", email = "shoaibmohtashim973@gmail.com"}
 ]
-description = "limit app for users, sites expiry, apps limits"
+description = "limit"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]

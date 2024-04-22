@@ -1,8 +1,8 @@
 app_name = "limit_app"
 app_title = "Limit App"
 app_publisher = "mohtashim"
-app_description = "limit app for users, sites expiry, apps limits"
-app_email = "shoaibmohtashim973"
+app_description = "limit"
+app_email = "shoaibmohtashim973@gmail.com"
 app_license = "MIT"
 
 # Includes in <head>
