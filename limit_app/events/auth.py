@@ -55,3 +55,6 @@ def user_limit(self, method):
         contact = frappe.db.get_value('Limiting Doc','support_contact')
 
         # validations
+
+        if allowed_companies != 0 and total_company >= allowed_companies:
+            frappe.throw(_("Purchased Subsidiary Licenses: {}<br>You have {} company(s).<br>You cannot create additionl company/subsidiary as you have reached the limit of active subsidiaries subscription you have purchased.<br>Please disable some of the active subsidiaries if not required or contact our sales & billing team as per below details and make payment for subsidiary.<br>Email: {}<br> Phone: {}").format(allowed_companies, total_company,email,phone))  
