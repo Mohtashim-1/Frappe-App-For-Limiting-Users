@@ -7,9 +7,9 @@ def successful_login(login_manager):
     """
     on_login verify if site is not expired
     """
-    expiry = frappe.db.get_single_value('PS Info', 'site_expiry_date')
-    email = frappe.db.get_single_value('PS Info', 'support_email')
-    phone = frappe.db.get_single_value('PS Info', 'support_phone')
+    expiry = frappe.db.get_single_value('Limiting Doc', 'site_expiry_date')
+    email = frappe.db.get_single_value('Limiting Doc', 'support_email')
+    phone = frappe.db.get_single_value('Limiting Doc', 'support_phone')
     print(expiry)
 
     diff = date_diff(expiry, today())
@@ -17,7 +17,7 @@ def successful_login(login_manager):
         frappe.throw(_("Your account has been suspended as your subscription has expired. <br> Contact our billing & sales team as per below details and make payment to renew your subscription <br> Email: {0} <br>Phone: {1}").format(email,phone), frappe.AuthenticationError)
 
 def user_limit(self, method):
-    allow_users = frappe.db.get_single_value('PS Info', 'no_of_users')
+    allow_users = frappe.db.get_single_value('Limiting Doc', 'no_of_users')
     print(allow_users)
 
 # get active users
@@ -28,8 +28,8 @@ def user_limit(self, method):
 
 # get email and phone from limit doctype
 
-    email = frappe.db.get_single_value('PS Info', 'support_email')
-    phone = frappe.db.get_single_value('PS Info', 'support_phone')
+    email = frappe.db.get_single_value('Limiting Doc', 'support_email')
+    phone = frappe.db.get_single_value('Limiting Doc', 'support_phone')
 
     if allow_users != 0 and active_users > allow_users:
         frappe.throw(_("Purchased User Licened {0},Creating{1} User <br> You can not create additional user or contact our sales & billing team as per below details and make payment for additional users. <br>Email{2} <br> Phone:{3}  ").format(allow_users,active_users,email,phone))
@@ -52,7 +52,7 @@ def user_limit(self, method):
         # get email and phone from limiting doc
 
         email = frappe.db.get_value('Limiting Doc','support_email')
-        contact = frappe.db.get_value('Limiting Doc','support_contact')
+        contact = frappe.db.get_value('Limiting Doc','support_phone')
 
         # validations
 
